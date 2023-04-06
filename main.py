@@ -1,5 +1,9 @@
+from typing import List, Dict
+
 from fastapi import FastAPI
 from pydantic import BaseModel
+
+from susumu_emotional_analysis.wrime_emotion_model import WrimeEmotionModel
 
 app = FastAPI()
 
@@ -8,19 +12,19 @@ class TextRequest(BaseModel):
     text: str
 
 
-class EmotionResponse(BaseModel):
-    polarity: float
-    subjectivity: float
+class AllEmotionsResponse(BaseModel):
+    emotions: List[Dict[str, float]]
 
 
-@app.post("/analyze_emotion", response_model=EmotionResponse)
+_model_dir_path = "./model_data/wrime_model.pth"
+emotion_model = WrimeEmotionModel(_model_dir_path)
+
+
+@app.post("/analyze_emotion", response_model=AllEmotionsResponse)
 async def analyze_emotion(text_request: TextRequest):
     text = text_request.text
-    result: EmotionResponse = EmotionResponse(
-        polarity=123.4,
-        subjectivity=456.5,
-    )
-    return result
+    emotion_dict = emotion_model.predict_emotion(text)
+    return AllEmotionsResponse(emotions=[emotion_dict])
 
 
 if __name__ == "__main__":

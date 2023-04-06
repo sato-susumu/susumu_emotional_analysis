@@ -1,3 +1,9 @@
+loguru
+transformers
+fugashi
+ipadic
+torch
+numpy
 fastapi
 pydantic
 uvicorn
