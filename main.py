@@ -1,4 +1,4 @@
-from typing import List, Dict
+from typing import Dict
 
 from fastapi import FastAPI
 from pydantic import BaseModel
@@ -13,7 +13,7 @@ class TextRequest(BaseModel):
 
 
 class AllEmotionsResponse(BaseModel):
-    emotions: List[Dict[str, float]]
+    emotions: Dict[str, float]
 
 
 _model_dir_path = "./model_data/wrime_model.pth"
@@ -24,7 +24,7 @@ emotion_model = WrimeEmotionModel(_model_dir_path)
 async def analyze_emotion(text_request: TextRequest):
     text = text_request.text
     emotion_dict = emotion_model.predict_emotion(text)
-    return AllEmotionsResponse(emotions=[emotion_dict])
+    return AllEmotionsResponse(emotions=emotion_dict)
 
 
 if __name__ == "__main__":
