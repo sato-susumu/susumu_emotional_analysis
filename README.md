@@ -1,21 +1,28 @@
 ## 概要
 テキストを入力として受け取り、感情情報(喜び、悲しみ、期待、驚き、怒り、恐れ、嫌悪)を推定して返すサーバーです。
 [WRIME: 主観と客観の感情分析データセット](https://github.com/ids-cv/wrime)でモデルを作り、 そのモデルをサーバーで利用しています。
+<br/>
 
 ## 動作確認環境
 Windows 11  
 Ubuntu 22.04 on WSL
+<br/>
 
 ## 動作方法
-### Windows
-#### 必要な準備
-Docker Desktop, git
+<br/>
 
-#### 準備
+### Windows
+
+#### 事前準備が必要なもの
+Docker Desktop, gitのインストール
+
+#### ソースコード取得
 コマンドラインで次の内容を実行
 ```
 git clone https://github.com/sato-susumu/susumu_emotional_analysis.git
 cd susumu_emotional_analysis
+git lfs install
+git lfs pull
 ```
 
 #### 起動
@@ -44,13 +51,20 @@ emotions
 stop_server.bat
 ```
 
+<br/>
 
 ### Ubuntu
-#### 準備
+
+#### 事前準備
+git-lfsのインストール
+
+#### ソースコード取得
 コマンドラインで次の内容を実行
 ```
 git clone https://github.com/sato-susumu/susumu_emotional_analysis.git
 cd susumu_emotional_analysis
+git lfs install
+git lfs pull
 ```
 
 #### 起動
@@ -75,9 +89,12 @@ curl -X POST -H "Content-Type: application/json" -d '{"text":"いい天気だ"}'
 ```
 ./stop_server.sh
 ```
+<br/>
 
 ## このサーバーを使っているアプリケーション
 - [susumu_ai_dialogue_system](https://github.com/sato-susumu/susumu_ai_dialogue_system)
+<br/>
 
 ## 謝辞
-ネガポジではない、基本8感情を扱った貴重なデータセット「[WRIME: 主観と客観の感情分析データセット](https://github.com/ids-cv/wrime)」を作成し公開してくださった梶原 智之氏、中島 悠太氏に感謝致します。
+ポジネガではない、基本8感情を扱った貴重なデータセット「[WRIME: 主観と客観の感情分析データセット](https://github.com/ids-cv/wrime)」を作成し公開してくださった梶原 智之氏、中島 悠太氏に感謝致します。
+<br/>
