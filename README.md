@@ -2,21 +2,22 @@
 テキストを入力として受け取り、感情情報(喜び、悲しみ、期待、驚き、怒り、恐れ、嫌悪)を推定して返すサーバーです。
 [WRIME: 主観と客観の感情分析データセット](https://github.com/ids-cv/wrime)でモデルを作り、 そのモデルをサーバーで利用しています。
 <br/>
+<br/>
+<br/>
+
 
 ## 動作確認環境
 Windows 11  
 Ubuntu 22.04 on WSL
 <br/>
-
-## 動作方法
+<br/>
 <br/>
 
-### Windows
-
-#### 事前準備が必要なもの
+## 使い方(Windows)
+### 事前準備が必要なもの
 Docker Desktop, gitのインストール
 
-#### ソースコード取得
+### ソースコード取得
 コマンドラインで次の内容を実行
 ```
 git clone https://github.com/sato-susumu/susumu_emotional_analysis.git
@@ -25,13 +26,13 @@ git lfs install
 git lfs pull
 ```
 
-#### 起動
+### 起動
 コマンドラインで次の内容を実行。初回などイメージのビルドが行われる場合は時間がかかります。サーバーの起動にも少し時間がかかります。
 ```
 start_server.bat
 ```
 
-#### 呼び出し例
+### 呼び出し例
 PowerShell上で次の内容を実行
 ```
 Invoke-RestMethod -Uri http://127.0.0.1:56563/analyze_emotion -Method Post -ContentType 'application/json' -Body ('{"text":"いい天気だ"}')
@@ -45,20 +46,20 @@ emotions
 ```
 
 
-#### 停止
+### 停止
 コマンドラインで次の内容を実行
 ```
 stop_server.bat
 ```
-
+<br/>
 <br/>
 
-### Ubuntu
+## 使い方 (Ubuntu)
 
-#### 事前準備
+### 事前準備
 git-lfsのインストール
 
-#### ソースコード取得
+### ソースコード取得
 コマンドラインで次の内容を実行
 ```
 git clone https://github.com/sato-susumu/susumu_emotional_analysis.git
@@ -67,13 +68,13 @@ git lfs install
 git lfs pull
 ```
 
-#### 起動
+### 起動
 コマンドプロンプトで次の内容を実行。初回などイメージのビルドが行われる場合は時間がかかります。サーバーの起動にも少し時間がかかります。
 ```
 ./start_server.sh
 ```
 
-#### 呼び出し例
+### 呼び出し例
 コマンドプロンプトで次の内容を実行
 ```
 curl -X POST -H "Content-Type: application/json" -d '{"text":"いい天気だ"}' http://127.0.0.1:56563/analyze_emotion
@@ -84,11 +85,12 @@ curl -X POST -H "Content-Type: application/json" -d '{"text":"いい天気だ"}'
 {"emotions":[{"Joy":0.8913211822509766,"Sadness":0.0037260549142956734,"Anticipation":0.03549545258283615,"Surprise":0.03090864047408104,"Anger":0.000993472058326006,"Fear":0.002147842664271593,"Disgust":0.0024142847396433353,"Trust":0.03299309313297272}]}
 ```
 
-#### 停止
+### 停止
 コマンドプロンプトで次の内容を実行
 ```
 ./stop_server.sh
 ```
+<br/>
 <br/>
 
 ## このサーバーを使っているアプリケーション
