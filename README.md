@@ -104,5 +104,5 @@ curl -X POST -H "Content-Type: application/json" -d '{"text":"いい天気だ"}'
 <br/>
 
 ## 謝辞
-ポジネガではない、基本8感情を扱った貴重なデータセット「[WRIME: 主観と客観の感情分析データセット](https://github.com/ids-cv/wrime)」を作成し公開してくださった梶原 智之氏、中島 悠太氏に感謝致します。
+ポジネガではない、基本8感情を扱った貴重なデータセット「[WRIME: 主観と客観の感情分析データセット](https://github.com/ids-cv/wrime)」を作成し公開してくださった梶原 智之氏、中島 悠太氏に感謝致します。Google Colaboratoryを使ってわかりやすくモデル作成方法を公開してくださった@izaki_shinさんに感謝いたします。
 <br/>
